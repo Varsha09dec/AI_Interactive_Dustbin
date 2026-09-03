@@ -2,13 +2,13 @@ import cv2
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
-print("Camera opened:", cap.isOpened())
+print("Camera opened:", cap.isOpened(), flush=True)
 
 while True:
     ret, frame = cap.read()
 
     if not ret:
-        print("Failed to read frame")
+        print("Failed to read frame", flush=True)
         break
 
     frame = cv2.flip(frame, 1)
