@@ -196,6 +196,22 @@ class AIRejectingDustbinApp:
         print("==================================================================")
         return True
 
+    def _enter_engaged_state(self, now: float) -> None:
+        """
+        Transitions into PERSON_ENGAGED: opens the dustbin lid invitingly and
+        plays the provoking voice line. Called both when a person first
+        approaches and when a fresh attempt begins after cooldown.
+        """
+        self.state = SystemState.PERSON_ENGAGED
+        self.state_enter_timestamp = now
+
+        # Open the lid so the person can see it "inviting" the throw.
+        if self.dustbin_controller is not None:
+            self.dustbin_controller.open_lid()
+
+        if self.audio_player is not None:
+            self.audio_player.play_response(DustbinAudioEvent.PERSON_DETECTED, force=False)
+
     def _execute_rejection_sequence(self) -> None:
         """
         Coordinates the funny rejection event:
@@ -236,16 +252,16 @@ class AIRejectingDustbinApp:
         # Step 3: Event Coordination & State Machine
         if not person_result.person_detected:
             if self.state != SystemState.SEARCHING_PERSON:
+                # Person walked away mid-interaction; close the lid safely
+                # before resetting so it doesn't sit open unattended.
+                if self.dustbin_controller is not None:
+                    self.dustbin_controller.close_lid()
                 self.state = SystemState.SEARCHING_PERSON
                 self.state_enter_timestamp = now
         else:
             # Person is present in front of the dustbin
             if self.state == SystemState.SEARCHING_PERSON:
-                self.state = SystemState.PERSON_ENGAGED
-                self.state_enter_timestamp = now
-                # Trigger welcoming/provoking voice line
-                if self.audio_player is not None:
-                    self.audio_player.play_response(DustbinAudioEvent.PERSON_DETECTED, force=False)
+                self._enter_engaged_state(now)
 
             elif self.state == SystemState.PERSON_ENGAGED:
                 # Watch for disposal/throwing motion
@@ -263,8 +279,13 @@ class AIRejectingDustbinApp:
             elif self.state == SystemState.COOLDOWN:
                 # Cooldown period to guarantee ONE response per throw
                 if (now - self.state_enter_timestamp) >= self.config.rejection_cooldown_sec:
+                    # Re-open the lid for the next attempt; do not replay the
+                    # provoking audio line again (force=False + cooldown on
+                    # the audio player already suppresses repeats).
                     self.state = SystemState.PERSON_ENGAGED
                     self.state_enter_timestamp = now
+                    if self.dustbin_controller is not None:
+                        self.dustbin_controller.open_lid()
 
         # Step 4: Render Unified Master HUD
         annotated_frame = self._render_master_hud(frame, person_result, throw_result)
