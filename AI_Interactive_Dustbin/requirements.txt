@@ -1,0 +1,14 @@
+# AI Interactive Rejecting Dustbin — Python dependencies
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Note: use "opencv-python" (not "opencv-python-headless") because main.py
+# opens a live GUI window (cv2.imshow) for the hackathon demo HUD.
+
+opencv-python>=4.8,<5
+numpy>=1.24,<3
+ultralytics>=8.2,<9      # YOLOv8 person / object detection
+mediapipe>=0.10,<0.11    # Hand landmark detection
+pyserial>=3.5,<4         # Arduino / ESP32 USB serial communication
+pygame>=2.5,<3           # Non-blocking funny-response audio playback
