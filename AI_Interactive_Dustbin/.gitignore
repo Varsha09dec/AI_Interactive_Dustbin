@@ -18,4 +18,4 @@ env/
 
 # Temporary camera test files
 assets/camera_test.jpg
-modules/phase2_throwing_detection/camera_test/
+modules/phase2_throwing_detection/camera_test
