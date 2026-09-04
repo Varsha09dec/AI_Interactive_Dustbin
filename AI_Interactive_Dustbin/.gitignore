@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+
+# Environment/secrets
+.env
+
+# Logs
+*.log
+
+# Temporary camera test files
+assets/camera_test.jpg
+modules/phase2_throwing_detection/camera_test/
