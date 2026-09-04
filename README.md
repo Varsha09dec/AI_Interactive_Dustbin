@@ -245,15 +245,24 @@ The software is divided into modular components so that AI/computer-vision proce
 
 > Add at least three screenshots from the **actual working project** below.
 
+*AI/computer-vision system detecting no person approaching the dustbin.* 
+<img width="797" height="631" alt="Screenshot 2026-09-04 113402" src="https://github.com/user-attachments/assets/e0652fd3-6eef-4e5f-acdd-c73a60984906" />
+
 *AI/computer-vision system detecting a person approaching the dustbin.*
+<img width="793" height="626" alt="Screenshot 2026-09-04 113337" src="https://github.com/user-attachments/assets/3800571e-d1a6-4372-abf7-4dba44c76f76" />
+
 
 *System analyzing the user's interaction or waste-disposal action.*
+<img width="805" height="626" alt="Screenshot 2026-09-04 110123" src="https://github.com/user-attachments/assets/7515cfb0-bcc0-4acc-a0f3-ae543b5b3607" />
+
 
 *Interactive dustbin responding to the detected action.*
 
 # Diagrams
 
-*assets/diagrams/workflow\.png*
+*Diagram of workflow*
+<img width="1536" height="1024" alt="Trash Bin - Workflow" src="https://github.com/user-attachments/assets/27051730-3465-434e-800e-ce7c5477c0a6" />
+
 
 For Hardware:
 
@@ -275,13 +284,8 @@ For Hardware:
 
 # Video
 
-[Add your 3–5 minute demo video link here]
 
 *The demo demonstrates the complete interaction pipeline, including camera-based detection, AI/computer-vision processing, decision making, Arduino serial communication, servo-controlled lid operation, and the dustbin's interactive response.*
-
-# Additional Demos
-
-[Add any additional demo videos, images, test results, or supporting links here]
 
 ## Team Contributions
 
