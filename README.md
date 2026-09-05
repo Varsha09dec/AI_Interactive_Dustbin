@@ -290,7 +290,7 @@ For Hardware:
 *The demo demonstrates the complete interaction pipeline, including camera-based detection, AI/computer-vision processing, decision making, Arduino serial communication, servo-controlled lid operation, and the dustbin's interactive response.* 
 
 Watch the video :
- [![Watch Video](video-thumbnail.png)(video.mp4)
+ [![Watch Video](AI_Interactive_Dustbin/video-thumbnail.png)(AI_Interactive_Dustbin/video.mp4)
 
 ## Team Contributions
 
