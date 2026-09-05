@@ -291,11 +291,13 @@ For Hardware:
 
 Watch the video :
  [![Watch Video](AI_Interactive_Dustbin/video-thumbnail.png)
+
  
 
-Uploading video.mp4…
+https://github.com/user-attachments/assets/6729aba1-384a-4565-9ed5-f6f63e354b81
 
 
+ 
 
 ## Team Contributions
 
